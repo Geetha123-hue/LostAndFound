@@ -1,0 +1,232 @@
+/* HEADER */
+.header {
+  font-size: 50px;
+  color:  white;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+.menuContainer {
+  margin-top: 30px;   /* moves whole block upward */
+}
+
+.page{
+  margin-top: 50px;
+  border-radius: 20px;
+  min-height: 100px;
+  background-color: #ffffff;
+  width:1300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;     /* ⬅ moves everything to top */
+  align-items: center;            /* ⬅ adjust how much down it should start */
+}
+
+/* MAIN BUTTONS IN SINGLE ROW */
+.menuRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: nowrap;     /* <<< Forces single row */
+  margin-bottom: 20px;
+}
+
+.logoBox {
+  display: flex;
+  justify-content: center;
+  margin-top: -10px;
+}
+
+.logo {
+  height: 70px;             /* adjust size */
+  width: auto;
+  object-fit: contain;
+}
+
+
+/* WRAPPER FOR EACH BUTTON+SUBMENU */
+.menuItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* MAIN BUTTON STYLE (SAME SIZE) */
+.menuBtn {
+  width: 180px;
+  height: 50px;
+  background: #ffffff;
+  color:  #532fa3;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+
+.menuBtn:hover {
+  background: #532fa3;
+  transform: scale(1.03);
+  color: white;
+}
+
+.leftSec {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon {
+  font-size: 18px;
+}
+
+/* SUBMENU BELOW ITS BUTTON */
+.subMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+  width: 180px;
+}
+
+.subMenuBtn {
+  background: #f1e8ff;
+  border: 1px solid #d2c4fa;
+  border-radius: 8px;
+  padding: 9px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.subMenuBtn:hover {
+  background: #e3d5ff;
+}
+
+/* LOGOUT BUTTON */
+.logoutBtn {
+  width: 180px;
+  height: 50px;
+  background: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 0px;
+  transition: 0.2s;
+}
+
+.logoutBtn:hover {
+  background: #c64543;
+  transform: scale(1.03);
+}
+
+
+
+
+
+
+
+
+
+
+/* Whole layout: left card + right image */
+.StudentMenubody {
+  width: 1300px;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 20px;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+/* LEFT WHITE CARD */
+.leftCard {
+
+  width:60%;
+  background: #ffffff;
+  padding: 35px;
+  border-radius: 22px;
+  text-align: left;
+  height: 500px;
+}
+
+
+/* HEADING */
+.title {
+  margin-top: 50px;
+  font-size: 45px;
+  font-weight: 700;
+  color: #1b2433;
+  margin-bottom: 12px;
+}
+
+/* PARAGRAPH */
+.description {
+  font-size: 20px;
+  color: #4a5568;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* BUTTON ROW */
+.buttonRow {
+  display: flex;
+  gap: 12px;
+}
+
+/* BLUE BUTTON */
+.primaryBtn {
+  background: #2b6cb0;
+  color: #fff;
+  border: none;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.primaryBtn:hover {
+  background: #205b93;
+}
+
+/* WHITE OUTLINE BUTTON */
+.secondaryBtn {
+  background: #ffffff;
+  color: #2b6cb0;
+  border: 2px solid #2b6cb0;
+  padding: 12px 22px;
+  border-radius: 25px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.secondaryBtn:hover {
+  background: #e8f1ff;
+}
+
+/* RIGHT IMAGE */
+.rightImageBox {
+  display: flex;
+  align-items: center;
+}
+
+.rightImage {
+  width: 420px;
+  height: 400px;
+  object-fit: contain;
+}

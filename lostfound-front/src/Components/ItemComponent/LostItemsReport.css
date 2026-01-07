@@ -1,0 +1,99 @@
+/* Background container */
+.report-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 40px;
+  font-family: "Poppins", sans-serif;
+}
+
+/* White card box */
+.report-card {
+  width: 90%;
+  max-width: 1100px;
+  background: white;
+  padding: 25px 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+.report-title {
+  text-align: center;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #0a0a0a;
+}
+
+.subtitle {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #131212;
+  font-size: 15px;
+}
+
+/* TABLE STYLING */
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  border: 2px solid #000; /* Full table border */
+}
+
+/* Table header */
+.report-table thead tr {
+  background: #ee9bc9;
+  color: rgb(246, 240, 240);
+}
+
+.report-table th {
+  padding: 12px;
+  font-weight: 600;
+  text-align: left;
+  border: 1px solid #000; /* Header cell border */
+}
+
+/* Body rows */
+.report-table tbody tr {
+  background: #e7e7e4;
+   color: rgb(3, 3, 3);
+}
+
+.report-table td {
+  padding: 12px;
+  border: 1px solid #000; /* Column & row border */
+}
+
+/* Hover effect */
+.report-table tbody tr:hover {
+  background: #080808;
+}
+
+/* Status Labels */
+.found {
+  font-weight: bold;
+  color: #0f9d58;
+}
+
+.not-found {
+  font-weight: bold;
+  color: #d93025;
+}
+
+/* Return Button */
+.return-btn {
+  display: block;
+  margin: 18px auto 0;
+  background: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 22px;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.return-btn:hover {
+  background: #218838;
+}
