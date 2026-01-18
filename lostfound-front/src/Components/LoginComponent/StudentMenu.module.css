@@ -1,38 +1,49 @@
+/* Root page wrapper — THIS FIXES THE SHIFT */
+.pagebody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
 /* HEADER */
 .header {
   font-size: 50px;
-  color:  white;
+  color: white;
   font-weight: bold;
   text-align: center;
   margin-top: 0;
   margin-bottom: 40px;
 }
+
 .menuContainer {
-  margin-top: 30px;   /* moves whole block upward */
+  margin-top: 30px;
 }
 
-.page{
+/* Top white navigation panel */
+.page {
   margin-top: 50px;
   border-radius: 20px;
   min-height: 100px;
   background-color: #ffffff;
-  width:1300px;
+  width: 1300px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;     /* ⬅ moves everything to top */
-  align-items: center;            /* ⬅ adjust how much down it should start */
+  justify-content: flex-start;
+  align-items: center;
 }
 
-/* MAIN BUTTONS IN SINGLE ROW */
+/* MAIN BUTTON ROW */
 .menuRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
   gap: 25px;
-  flex-wrap: nowrap;     /* <<< Forces single row */
+  flex-wrap: nowrap;
   margin-bottom: 20px;
 }
 
+/* Logo */
 .logoBox {
   display: flex;
   justify-content: center;
@@ -40,25 +51,24 @@
 }
 
 .logo {
-  height: 70px;             /* adjust size */
+  height: 70px;
   width: auto;
   object-fit: contain;
 }
 
-
-/* WRAPPER FOR EACH BUTTON+SUBMENU */
+/* WRAPPER FOR EACH BUTTON */
 .menuItem {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-/* MAIN BUTTON STYLE (SAME SIZE) */
+/* MAIN BUTTON STYLE */
 .menuBtn {
   width: 180px;
   height: 50px;
   background: #ffffff;
-  color:  #532fa3;
+  color: #532fa3;
   border: none;
   border-radius: 10px;
   font-size: 16px;
@@ -87,7 +97,7 @@
   font-size: 18px;
 }
 
-/* SUBMENU BELOW ITS BUTTON */
+/* SUBMENU */
 .subMenu {
   display: flex;
   flex-direction: column;
@@ -110,7 +120,7 @@
   background: #e3d5ff;
 }
 
-/* LOGOUT BUTTON */
+/* LOGOUT */
 .logoutBtn {
   width: 180px;
   height: 50px;
@@ -120,7 +130,6 @@
   border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
-  margin-top: 0px;
   transition: 0.2s;
 }
 
@@ -129,16 +138,7 @@
   transform: scale(1.03);
 }
 
-
-
-
-
-
-
-
-
-
-/* Whole layout: left card + right image */
+/* STUDENT BODY SECTION */
 .StudentMenubody {
   width: 1300px;
   height: 70vh;
@@ -152,28 +152,23 @@
   border-radius: 20px;
 }
 
-/* LEFT WHITE CARD */
+/* LEFT CARD */
 .leftCard {
-
-  width:60%;
-  background: #ffffff;
+  width: 60%;
   padding: 35px;
   border-radius: 22px;
   text-align: left;
   height: 500px;
 }
 
-
-/* HEADING */
+/* TEXT */
 .title {
   margin-top: 50px;
   font-size: 45px;
   font-weight: 700;
   color: #1b2433;
-  margin-bottom: 12px;
 }
 
-/* PARAGRAPH */
 .description {
   font-size: 20px;
   color: #4a5568;
@@ -181,13 +176,12 @@
   margin-bottom: 25px;
 }
 
-/* BUTTON ROW */
+/* BUTTONS */
 .buttonRow {
   display: flex;
   gap: 12px;
 }
 
-/* BLUE BUTTON */
 .primaryBtn {
   background: #2b6cb0;
   color: #fff;
@@ -197,13 +191,12 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
 }
+
 .primaryBtn:hover {
   background: #205b93;
 }
 
-/* WHITE OUTLINE BUTTON */
 .secondaryBtn {
   background: #ffffff;
   color: #2b6cb0;
@@ -213,8 +206,8 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
 }
+
 .secondaryBtn:hover {
   background: #e8f1ff;
 }

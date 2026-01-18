@@ -32,15 +32,10 @@ const AdminMenu = () => {
       <div className={styles.page}>
         <div className={styles.menuContainer}>
 
-          {/* ===== HEADER LOGO + MENU ROW ===== */}
           <div className={styles.menuRow}>
 
             <div className={styles.logoBox}>
-              <img
-                src="/img.jpg"
-                alt="App Logo"
-                className={styles.logo}
-              />
+              <img src="/img.jpg" alt="App Logo" className={styles.logo} />
             </div>
 
             {/* Students */}
@@ -87,18 +82,15 @@ const AdminMenu = () => {
                   >
                     Found Item List
                   </button>
-
                   <button
                     className={styles.subMenuBtn}
                     onClick={() => navigate("/lost-report")}
                   >
                     Lost Item List
                   </button>
-
-                  {/* ✅ MATCH ITEM LIST ADDED */}
                   <button
                     className={styles.subMenuBtn}
-                    onClick={() => navigate("/match-item-list")}
+                    onClick={() => navigate("/match-list")}
                   >
                     Match Item List
                   </button>
@@ -120,13 +112,22 @@ const AdminMenu = () => {
 
               {reportMenuOpen && (
                 <div className={styles.subMenu}>
-                  <button className={styles.subMenuBtn}>
+                  <button
+                    className={styles.subMenuBtn}
+                    onClick={() => navigate("/found-report")}
+                  >
                     Found Item Report
                   </button>
-                  <button className={styles.subMenuBtn}>
+                  <button
+                    className={styles.subMenuBtn}
+                    onClick={() => navigate("/lost-report")}
+                  >
                     Lost Item Report
                   </button>
-                  <button className={styles.subMenuBtn}>
+                  <button
+                    className={styles.subMenuBtn}
+                    onClick={() => navigate("/analysis-dashboard")}
+                  >
                     Lost + Found Analysis
                   </button>
                 </div>
@@ -136,7 +137,7 @@ const AdminMenu = () => {
             {/* Chat */}
             <button
               className={styles.menuBtn}
-              onClick={() => navigate("/chat")}
+              onClick={() => navigate("/chat-msg")}
             >
               <div className={styles.leftSec}>
                 <FaComments className={styles.icon} /> Chat
@@ -152,17 +153,13 @@ const AdminMenu = () => {
         </div>
       </div>
 
-      {/* ===== ADMIN DASHBOARD BODY ===== */}
+      {/* Dashboard Body */}
       <div className={styles.AdminMenubody}>
-
         <div className={styles.leftCard}>
           <h2 className={styles.title}>ADMIN DASHBOARD</h2>
-
           <p className={styles.description}>
-            Welcome Admin! Manage student data, oversee lost & found items,
-            verify reports, and maintain system integrity—all in one place.
+            Manage students, lost & found items, verify reports, and monitor system analytics.
           </p>
-
           <div className={styles.buttonRow}>
             <button
               className={styles.primaryBtn}
@@ -181,13 +178,8 @@ const AdminMenu = () => {
         </div>
 
         <div className={styles.rightImageBox}>
-          <img
-            src="gyc.jpg"
-            alt="Admin Illustration"
-            className={styles.rightImage}
-          />
+          <img src="gyc.jpg" alt="Admin" className={styles.rightImage} />
         </div>
-
       </div>
     </div>
   );

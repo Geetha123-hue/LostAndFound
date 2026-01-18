@@ -1,51 +1,58 @@
-i complete admin also
+/* ===============================
+ PAGE BACKGROUND
+================================ */
 
-/* Remove background image — matching Student Menu clean style */
-.pagebody {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-/* Top menu section */
+/* ===============================
+ TOP NAV CONTAINER
+================================ */
 .page {
-  margin-top: 50px;
-  border-radius: 20px;
+  margin-top: 20px;
+  border-radius: 22px;
   background-color: #ffffff;
-  width: 1300px;
-  min-height: 100px;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 110px;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
+/* ===============================
+ MENU ROW
+================================ */
 .menuContainer {
-  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .menuRow {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 25px;
-  flex-wrap: nowrap;
-  margin-bottom: 20px;
+  align-items: center;
+  gap: 24px;
+  padding: 25px 20px;
+  flex-wrap: wrap;
 }
 
+/* ===============================
+ LOGO
+================================ */
 .logoBox {
   display: flex;
-  justify-content: center;
-  margin-top: -10px;
+  align-items: center;
+  margin-right: 10px;
 }
 
 .logo {
-  height: 70px;
+  height: 65px;
   width: auto;
   object-fit: contain;
 }
 
-/* BUTTONS */
+/* ===============================
+ MENU BUTTONS
+================================ */
 .menuItem {
   display: flex;
   flex-direction: column;
@@ -54,25 +61,26 @@ i complete admin also
 
 .menuBtn {
   width: 180px;
-  height: 50px;
+  height: 48px;
   background: #ffffff;
-  color: #532fa3;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
+  color: #4f46e5;
+  border: 1px solid #dcdcff;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.25s;
 }
 
 .menuBtn:hover {
-  background: #532fa3;
+  background: #4f46e5;
   color: white;
-  transform: scale(1.03);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(79, 70, 229, 0.35);
 }
 
 .leftSec {
@@ -82,128 +90,181 @@ i complete admin also
 }
 
 .icon {
-  font-size: 18px;
+  font-size: 17px;
 }
 
+/* ===============================
+ SUB MENU
+================================ */
 .subMenu {
+  margin-top: 8px;
+  width: 180px;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-top: 10px;
-  width: 180px;
 }
 
 .subMenuBtn {
-  background: #f1e8ff;
-  border: 1px solid #d2c4fa;
-  border-radius: 8px;
+  background: #eef2ff;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
   padding: 9px;
   cursor: pointer;
   font-size: 14px;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .subMenuBtn:hover {
-  background: #e3d5ff;
+  background: #e0e7ff;
 }
 
+/* ===============================
+ LOGOUT BUTTON
+================================ */
 .logoutBtn {
   width: 180px;
-  height: 50px;
-  background: #d9534f;
+  height: 48px;
+  background: #ef4444;
   color: white;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .logoutBtn:hover {
-  background: #c64543;
-  transform: scale(1.03);
+  background: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(239, 68, 68, 0.35);
 }
 
-/* ADMIN BODY SECTION */
+/* ===============================
+ DASHBOARD BODY
+================================ */
 .AdminMenubody {
-  width: 1300px;
-  height: 70vh;
+  width: 100%;
+  max-width: 1300px;
+  min-height: 520px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 40px;
-  padding: 20px;
-  margin-top: 20px;
-  background: #ffffff;
-  border-radius: 20px;
+  padding: 40px;
+  margin-top: 25px;
+  background: white;
+  border-radius: 22px;
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
 }
 
+/* ===============================
+ LEFT CONTENT
+================================ */
 .leftCard {
   width: 60%;
-  padding: 35px;
-  border-radius: 22px;
-  text-align: left;
-  height: 500px;
 }
 
 .title {
-  margin-top: 50px;
-  font-size: 45px;
-  font-weight: 700;
-  color: #1b2433;
+  font-size: 44px;
+  font-weight: 800;
+  color: #0f172a;
 }
 
 .description {
-  font-size: 20px;
-  color: #4a5568;
+  font-size: 18px;
+  color: #475569;
   line-height: 1.6;
-  margin-bottom: 25px;
+  margin: 18px 0 28px;
 }
 
 .buttonRow {
   display: flex;
-  gap: 12px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
+/* ===============================
+ BUTTONS
+================================ */
 .primaryBtn {
-  background: #2b6cb0;
-  color: #fff;
+  background: #4f46e5;
+  color: white;
   border: none;
-  padding: 12px 22px;
+  padding: 12px 26px;
   border-radius: 25px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .primaryBtn:hover {
-  background: #205b93;
+  background: #4338ca;
 }
 
 .secondaryBtn {
-  background: #ffffff;
-  color: #2b6cb0;
-  border: 2px solid #2b6cb0;
-  padding: 12px 22px;
+  background: white;
+  color: #4f46e5;
+  border: 2px solid #4f46e5;
+  padding: 12px 26px;
   border-radius: 25px;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
-  transition: 0.2s;
+  transition: 0.25s;
 }
 
 .secondaryBtn:hover {
-  background: #e8f1ff;
+  background: #eef2ff;
 }
 
+/* ===============================
+ RIGHT IMAGE
+================================ */
 .rightImageBox {
   display: flex;
+  justify-content: center;
   align-items: center;
 }
 
 .rightImage {
-  width: 420px;
-  height: 400px;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
   object-fit: contain;
+}
+
+/* ===============================
+ RESPONSIVE DESIGN
+================================ */
+@media (max-width: 1024px) {
+  .AdminMenubody {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .leftCard {
+    width: 100%;
+  }
+
+  .buttonRow {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .menuBtn,
+  .logoutBtn {
+    width: 160px;
+  }
+
+  .title {
+    font-size: 34px;
+  }
+
+  .description {
+    font-size: 16px;
+  }
 }

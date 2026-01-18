@@ -4,103 +4,76 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.infosys.lostFoundApplication.bean.LostfoundUser;
-import com.infosys.lostFoundApplication.config.EncoderConfig;
 import com.infosys.lostFoundApplication.service.LostfoundUserService;
 
-import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@RequestMapping("/lostfound/")
+@RequestMapping("/lostfound")
 @CrossOrigin(origins = "http://localhost:3535", allowCredentials = "true")
-
 public class LoginController {
-	@Autowired
-	private LostfoundUserService service;
-	@Autowired
-	private EncoderConfig econfig;
-	@Autowired
-	private AuthenticationManager authenticationManager;
-	@PostMapping("/login")
-	public void registerNewUser(@RequestBody LostfoundUser user)
-	{
-		PasswordEncoder bCrypt=econfig.passwordEncoding();
-		String encodedPassword=bCrypt.encode(user.getPassword());
-		user.setPassword(encodedPassword);
-		service.save(user);
-		
-	}
-	@GetMapping("/login/{userId}/{password}")
-	public String validateUser(@PathVariable String userId,@PathVariable String password) {
-		String role="false";
-		try {
-			 Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(userId, password));
-		 	    role=service.getRole();
-		 	     SecurityContextHolder.getContext().setAuthentication(authentication);
-			}catch(Exception ex) {}
-		return role;
-	}
- 
-	@GetMapping("/login")
-	public LostfoundUser getUserDetails() {
-		return service.getUser();
-	}
-	
-	@DeleteMapping ("/login/{username}")
-	public void deleteUser(@PathVariable String username) {
-		service.deleteUser(username);
-	}
-	
-	@GetMapping("/user")
-	public String getUserId() {
-		return service.getUserId();
-	}
 
-	@GetMapping("/role")
-	public String getRole() {
-		return service.getRole();
-	}
-	
-	@GetMapping("/me")
-	public LostfoundUser getUser() {
-		return service.getUser();
-	}
-	
-	@GetMapping("/student")
-	public List<LostfoundUser> getAllStudents(){
-		return service.getAllStudents();
-	}
-	
-	@PostMapping("/logout")
-	 public ResponseEntity<String> logout(HttpServletRequest request,
-	                                         HttpServletResponse response) {
+    @Autowired
+    private LostfoundUserService service;
 
-	        // Clear Spring Security Context
-	        SecurityContextHolder.clearContext();
+//    @PostMapping("/login")
+//    public String login(@RequestBody LostfoundUser user) {
+//        return service.validateUser(user.getUsername(), user.getPassword());
+//    }
+    @PostMapping("/login")
+    public ResponseEntity<String> login(@RequestBody LostfoundUser user, HttpSession session) {
 
-	        // Invalidate session
-	        HttpSession session = request.getSession(false);
-	        if (session != null) {
-	            session.invalidate();
-	        }
+        String role = service.validateUser(user.getUsername(), user.getPassword());
 
-	        // Delete cookie
-	        Cookie cookie = new Cookie("JSESSIONID", null);
-	        cookie.setPath("/");
-	        cookie.setMaxAge(0);
-	        response.addCookie(cookie);
+        if ("INVALID".equals(role)) {
+            return ResponseEntity.status(401).body("INVALID");
+        }
 
-	        return ResponseEntity.ok("Logout successful");
-	    }
+        session.setAttribute("userId", user.getUsername());
+        session.setAttribute("role", role);
 
+        return ResponseEntity.ok(role);
+    }
+
+
+    @PostMapping("/register")
+    public String register(@RequestBody LostfoundUser user) {
+        service.save(user);
+        return "Registered";
+    }
+
+    @GetMapping("/me")
+    public LostfoundUser me() {
+        return service.getUser();
+    }
+
+    @GetMapping("/user")
+    public String user() {
+        return service.getUserId();
+    }
+
+    @GetMapping("/role")
+    public String role() {
+        return service.getRole();
+    }
+
+    @PostMapping("/logout")
+    public void logout(HttpSession session) {
+        session.invalidate();
+    }
+    
+ // 🔧 FIXED: This endpoint was missing — REQUIRED for StudentList.jsx
+    @GetMapping("/student")
+    public List<LostfoundUser> getAllStudents() {
+        return service.getAllStudents();
+    }
+    
+ // 🔧 FIXED: Required for delete button in StudentList.jsx
+    @DeleteMapping("/login/{username}")
+    public void deleteStudent(@PathVariable String username) {
+        service.deleteUser(username);
+    }
 }

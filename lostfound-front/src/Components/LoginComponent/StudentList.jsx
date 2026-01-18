@@ -6,7 +6,6 @@ const StudentList = () => {
   const [studentList, setStudentList] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-
   useEffect(() => {
     fetchStudents();
   }, []);

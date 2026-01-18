@@ -1,113 +1,93 @@
-import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getAllFoundItems, getFoundItemsByUsername } from "../../Services/FoundItemService";
-import '../../DisplayView.css';
+import "./FoundItemsReport.css";
 import { getRole } from "../../Services/LoginService";
 
 const FoundItemsReport = () => {
-    let navigate = useNavigate();
-    const [itemList, setItemList] = useState([]);
-    const [role, setRole] = useState("");
+  const navigate = useNavigate();
+  const [items, setItems] = useState([]);
+  const [role, setRole] = useState("");
 
-    const showFoundItems = () => {
-        getRole().then((response) => {
-            setRole(response.data);
+  useEffect(() => {
+    loadItems();
+  }, []);
 
-            if (response.data === 'Admin') {
-                getAllFoundItems().then((res1) => {
-                    setItemList(res1.data);
-                });
-            }
-            else if (response.data === 'Student') {
-                getFoundItemsByUsername().then((res2) => {
-                    setItemList(res2.data);
-                });
-            }
-        });
-    };
+  const loadItems = async () => {
+    const r = await getRole();
+    setRole(r.data);
 
-    useEffect(() => {
-        showFoundItems();
-    }, []);
+    if (r.data === "Admin") {
+      const res = await getAllFoundItems();
+      setItems(res.data);
+    } else {
+      const res = await getFoundItemsByUsername();
+      setItems(res.data);
+    }
+  };
 
-    const returnBack = () => {
-        if (role === 'Admin')
-            navigate('/AdminMenu');
-        else if (role === 'Student')
-            navigate('/StudentMenu');
-    };
+  const goBack = () => {
+    navigate(role === "Admin" ? "/AdminMenu" : "/StudentMenu");
+  };
 
-    return (
-        <div className="text-center">
-            <div>
-                {
-                    role === 'Admin'
-                        ? <h2 className="text-center">Admin - Found Item List</h2>
-                        : <h2 className="text-center">Student - Found Item List</h2>
-                }
+  const total = items.length;
+  const returned = items.filter(i => i.status).length;
+  const notReturned = total - returned;
 
-                <hr style={{
-                    height: "3px",
-                    borderWidth: 0,
-                    color: "yellow",
-                    backgroundColor: "green"
-                }} />
+  return (
+    <div className="report-container">
+      <div className="report-card">
 
-                <div className="row">
-                    <table className="table table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Item Id</th>
-                                <th>Item Name</th>
-                                <th>Category</th>
-                                <th>Color</th>
-                                <th>Brand</th>
-                                <th>Location</th>
-                                <th>Found Date</th>
-                                <th>User Id</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
+        <h2 className="report-title">Found Items Report</h2>
 
-                        <tbody>
-                            {
-                                itemList.map((item) => (
-                                    <tr key={item.foundItemId}>
-                                        <td>{item.foundItemId}</td>
-                                        <td>{item.foundItemName}</td>
-                                        <td>{item.category}</td>
-                                        <td>{item.color}</td>
-                                        <td>{item.brand}</td>
-                                        <td>{item.location}</td>
-                                        <td>{item.foundDate}</td>
-                                        <td>{item.username}</td>
-                                        {
-                                            item.status
-                                                ? <td>Returned</td>
-                                                : <td>Not Returned</td>
-                                        }
-                                    </tr>
-                                ))
-                            }
-                        </tbody>
-                    </table>
-
-                    <br />
-
-                    <div className="form-group">
-                        <button
-                            style={{ marginLeft: "10px" }}
-                            onClick={returnBack}
-                            className="btn btn-success"
-                        >
-                            Return
-                        </button>
-                    </div>
-
-                </div>
-            </div>
+        <div className="summary-bar">
+          <span>Total: {total}</span>
+          <span className="badge found">Returned: {returned}</span>
+          <span className="badge not-found">Not Returned: {notReturned}</span>
         </div>
-    );
+
+        <table className="report-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Color</th>
+              <th>Brand</th>
+              <th>Location</th>
+              <th>Date</th>
+              <th>User</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {items.map(item => (
+              <tr key={item.foundItemId}>
+                <td>{item.foundItemId}</td>
+                <td>{item.foundItemName}</td>
+                <td>{item.category}</td>
+                <td>{item.color}</td>
+                <td>{item.brand}</td>
+                <td>{item.location}</td>
+                <td>{item.foundDate}</td>
+                <td>{item.username}</td>
+
+                <td>
+                  <span className={`badge ${item.status ? "found" : "not-found"}`}>
+                    {item.status ? "Returned" : "Not Returned"}
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+
+        <button className="return-btn" onClick={goBack}>Return</button>
+
+      </div>
+    </div>
+  );
 };
 
 export default FoundItemsReport;

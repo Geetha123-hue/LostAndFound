@@ -9,13 +9,14 @@ import com.infosys.lostFoundApplication.controller.ChatController;
 
 @Component
 public class WebSocketEventListener {
-
+	
 	@Autowired
-	private ChatController chatController;
+	  private ChatController chatController;
 	
 	@EventListener
 	public void handleWebSocketDisconnect(SessionDisconnectEvent event) {
-		String sessionId=event.getSessionId();
+		String sessionId = event.getSessionId();
 		chatController.removeUser(sessionId);
 	}
+
 }

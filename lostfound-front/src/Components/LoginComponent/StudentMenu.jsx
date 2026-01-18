@@ -30,20 +30,15 @@ const StudentMenu = () => {
       <div className={styles.page}>
         <div className={styles.menuContainer}>
 
-          {/* ===== MAIN MENU ROW ===== */}
           <div className={styles.menuRow}>
             <div className={styles.logoBox}>
-              <img
-                src="/img.jpg"
-                alt="App Logo"
-                className={styles.logo}
-              />
+              <img src="/img.jpg" alt="App Logo" className={styles.logo} />
             </div>
 
             {/* Personal */}
             <button
               className={styles.menuBtn}
-              onClick={() => navigate("/my-profile")}
+              onClick={() => navigate("/profile")}
             >
               <div className={styles.leftSec}>
                 <FaUser className={styles.icon} /> Personal
@@ -70,13 +65,18 @@ const StudentMenu = () => {
                   >
                     Lost Item Form Submission
                   </button>
-
                   <button
                     className={styles.subMenuBtn}
                     onClick={() => navigate("/lost-report")}
                   >
                     Lost Item List
                   </button>
+                  {/* <button
+                    className={styles.subMenuBtn}
+                    onClick={() => navigate("/lost-search")}
+                  >
+                    Lost Item Search
+                  </button> */}
                 </div>
               )}
             </div>
@@ -101,7 +101,7 @@ const StudentMenu = () => {
                   >
                     Found Item Form Submission
                   </button>
-
+                  
                   <button
                     className={styles.subMenuBtn}
                     onClick={() => navigate("/found-report")}
@@ -112,10 +112,10 @@ const StudentMenu = () => {
               )}
             </div>
 
-            {/* Chat */}
+            {/* ✅ Chat (ONLY FIX HERE) */}
             <button
               className={styles.menuBtn}
-              onClick={() => navigate("/chat")}
+              onClick={() => navigate("/chat-msg")}
             >
               <div className={styles.leftSec}>
                 <FaComments className={styles.icon} /> Chat
@@ -126,23 +126,19 @@ const StudentMenu = () => {
             <button className={styles.logoutBtn} onClick={handleLogout}>
               <FaSignOutAlt /> Logout
             </button>
+
           </div>
         </div>
       </div>
 
-      {/* ===== BODY SECTION ===== */}
+      {/* FULL BODY RESTORED */}
       <div className={styles.StudentMenubody}>
-
-        {/* LEFT CARD */}
         <div className={styles.leftCard}>
           <h2 className={styles.title}>WELCOME, UNIVERSITY STUDENTS!</h2>
-
           <p className={styles.description}>
             Our mission is simple: to help you find your lost items quickly and
-            report items easily. Whether it’s a misplaced textbook or forgotten
-            belongings, we connect you with your items.
+            report items easily.
           </p>
-
           <div className={styles.buttonRow}>
             <button
               className={styles.primaryBtn}
@@ -150,7 +146,6 @@ const StudentMenu = () => {
             >
               REPORT A LOST ITEM
             </button>
-
             <button
               className={styles.secondaryBtn}
               onClick={() => navigate("/found-report")}
@@ -160,13 +155,8 @@ const StudentMenu = () => {
           </div>
         </div>
 
-        {/* RIGHT IMAGE */}
         <div className={styles.rightImageBox}>
-          <img
-            src="gyc.jpg"
-            alt="Lost & Found Illustration"
-            className={styles.rightImage}
-          />
+          <img src="gyc.jpg" alt="Lost & Found" className={styles.rightImage} />
         </div>
       </div>
     </div>

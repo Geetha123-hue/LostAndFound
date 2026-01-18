@@ -1,38 +1,29 @@
 import axios from "axios";
 
+axios.defaults.withCredentials = true;
+
 const BASE_URL = "http://localhost:9595/lostfound";
 
-const LOGIN_URL  = `${BASE_URL}/login`;
-const ROLE_URL   = `${BASE_URL}/role`;
-const USER_URL   = `${BASE_URL}/user`;
-const LOGOUT_URL = `${BASE_URL}/logout`;
-const STD_URL    = `${BASE_URL}/student`;
-const ME_URL     = `${BASE_URL}/me`;
-
 export const registerNewUser = (user) =>
-  axios.post(LOGIN_URL, user, { withCredentials: true });
+  axios.post(`${BASE_URL}/register`, user);
 
-export const validateUser = (userId, password) =>
-  axios.get(`${LOGIN_URL}/${userId}/${password}`, { withCredentials: true });
+export const validateUser = (username, password) =>
+  axios.post(`${BASE_URL}/login`, { username, password });
 
 export const getUserDetails = () =>
-  axios.get(LOGIN_URL, { withCredentials: true });
+  axios.get(`${BASE_URL}/me`);
 
 export const getRole = () =>
-  axios.get(ROLE_URL, { withCredentials: true });
+  axios.get(`${BASE_URL}/role`);
 
 export const logoutUser = () =>
-  axios.post(LOGOUT_URL, {}, { withCredentials: true });
+  axios.post(`${BASE_URL}/logout`);
 
 export const getUserId = () =>
-  axios.get(USER_URL, { withCredentials: true });
-
-export const getUser = () =>
-  axios.get(ME_URL, { withCredentials: true });
+  axios.get(`${BASE_URL}/user`);
 
 export const getAllStudents = () =>
-  axios.get(STD_URL, { withCredentials: true });
+  axios.get(`${BASE_URL}/student`);
 
-/* ✅ DELETE BY USERNAME (MATCHES BACKEND) */
 export const deleteStudent = (username) =>
-  axios.delete(`${LOGIN_URL}/${username}`, { withCredentials: true });
+  axios.delete(`${BASE_URL}/login/${username}`);
